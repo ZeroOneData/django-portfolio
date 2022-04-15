@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Users</h1>
+
+    <ul>
+        {% for user in object_list %}
+            <li>
+                <a href="{% url 'profile_detail' user.pk %}">
+                    {{user.first_name}} - {{user.last_name}}
+                </a> 
+                <br/>
+                {{user.email}}
+            </li>   
+        {% endfor %}
+    </ul>
+
+{% endblock %}
