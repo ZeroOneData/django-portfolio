@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{{user.email}}{% endblock %}
+
+{% block content %}
+
+    <h1>User Profile...</h1>
+
+    page user: {{ page_user.user.id }}
+    current user: {{user.id}}
+
+    {% if user.is_authenticated %}
+        {% if user.id == page_user.user.id %}
+            <h1>{{page_user.user.email}}</h1>
+
+            <br/>
+            <br/>
+            <a href="{% url 'home' %}" class="btn btn-secondary" >Back</a>
+        {% else %}
+            You are not authorized to perform this action.
+        {% endif %}
+    {% else %}
+        You are not authorized to perform this action.
+    {% endif %}
+
+{% endblock %}

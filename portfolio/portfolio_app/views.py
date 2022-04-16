@@ -1,6 +1,7 @@
 from re import template
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from .models import Profile
 
 #temp import
 from django.contrib.auth.models import User
@@ -11,7 +12,7 @@ from django.contrib.auth.models import User
 class HomeView(ListView):
 
     #temp model decleration
-    model = User
+    model = Profile
 
     template_name = 'home.html'
 

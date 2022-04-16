@@ -2,6 +2,16 @@ from dataclasses import fields
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from portfolio_app.models import Profile
+
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model= Profile
+        fields = ('home_address', 'phone_number')
+        widgets = {
+            'home_address': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
