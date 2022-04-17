@@ -10,7 +10,7 @@ class ShowProfilePageView(generic.DetailView):
     template_name = 'registration/user_profile.html'
 
     def get_context_data(self, *args, **kwargs):
-        users = Profile.objects.all()
+        # users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
 
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
