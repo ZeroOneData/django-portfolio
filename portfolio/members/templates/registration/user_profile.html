@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{user.email}}{% endblock %}
 
 {% block content %}
 
-    <h1>User Profile...</h1>
+    <h1>My Profile...</h1>
 
-    page user: {{ page_user.user.id }}
-    current user: {{user.id}}
+    <br/><br/>
+
+    <!-- page user: {{ page_user.user.id }}
+    current user: {{user.id}} -->
 
     {% if user.is_authenticated %}
         {% if user.id == page_user.user.id %}
@@ -14,7 +17,11 @@
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
+                            {% if page_user.profile_picture %}
+                                <img src="{{page_user.profile_picture.url}}" class="img-fluid rounded-start" alt="...">
+                            {% else %}
+                                <img src="{% static 'portfolio_app/images/default_profile_pic.jpg'%}" class="img-fluid rounded-start" alt="...">
+                            {% endif %}
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

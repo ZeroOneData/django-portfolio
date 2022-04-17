@@ -7,14 +7,20 @@
         <br/><br />
 
         <div class="form-group">
-            <form method="POST" enctype="'multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{form.media}}
                 {{form.as_p}}
                 <button class="btn btn-secondary">
                     Create Profile Page
                 </button>
             </form>
         </div>
+
+        <br/>
+        <br/>
+        <a href="{% url 'home' %}" class="btn btn-secondary" >Back</a>
+        
     {% else %}
         You are not authorized to perform this action.
     {% endif %}
