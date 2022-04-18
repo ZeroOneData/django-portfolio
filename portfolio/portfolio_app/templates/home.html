@@ -44,13 +44,20 @@
         <div class="shadow  mb-2 bg-body rounded" style="max-width: 540px;">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            {% if x.profile_picture %}
-                            <img src="{{x.profile_picture.url}}" class="img-fluid rounded-start" alt="...">
-                            {% else %}
-                            <img src="{% static 'portfolio_app/images/default_profile_pic.jpg'%}" class="img-fluid rounded-start" alt="...">
-                            {% endif %}
-                        </div>
+                        {% if x.profile_picture %}
+                            <div class="col-md-4">
+                                <img src="{{x.profile_picture.url}}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                        {% else %}
+                            <div class="col-md-4 d-flex align-items-center justify-content-center" style="background: rgb(201, 196, 196);">
+                                {% if x.user.id == user.id %}
+                                    <a href="{% url 'edit_profile_page' x.id %}" class="card-link">Add Photo</a>
+                                {% else %}
+                                    <h6>No Photo</h6>
+                                {% endif %}
+                                <!-- <img src="{% static 'portfolio_app/images/default_profile_pic.jpg'%}" class="img-fluid rounded-start" alt="..."> -->
+                            </div>
+                        {% endif %}
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{x.user.first_name}} {{x.user.last_name}}</h5>
