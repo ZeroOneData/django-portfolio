@@ -32,7 +32,7 @@
                                 <p class="card-text">Home Address: {{page_user.home_address}}</p>
                                 <p class="card-text"><small class="text-muted">Phone: {{page_user.phone_number}}</small></p>
                                 <a href="{% url 'edit_profile_page' page_user.id %}" class="card-link">Edit Profile</a>
-                                <a href="#" class="card-link">View in Map</a>
+                                <a href="{% url 'map' %}" class="card-link">View in Map</a>
                             </div>
                         </div>
                     </div>

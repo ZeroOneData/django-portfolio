@@ -65,7 +65,7 @@
                                 <p class="card-text"><small class="text-muted">Phone: {{x.phone_number}}</small></p>
                                 {% if x.user.id == user.id %}
                                     <a href="{% url 'show_profile_page' x.id %}" class="card-link">View Profile</a>
-                                    <a href="#" class="card-link">View in Map</a>
+                                    <a href="{% url 'map' %}" class="card-link">View in Map</a>
                                 {% endif %}
                             </div>
                         </div>
