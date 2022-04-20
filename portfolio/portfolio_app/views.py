@@ -1,23 +1,13 @@
-from re import template
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView
 from .models import Profile
-from django.views.generic import TemplateView
 import folium
-import geocoder
-
-#temp import
+# import geocoder
 from django.contrib.auth.models import User
 
-# def home(request):
-#     return render (request, 'home.html', {})
-
 class HomeView(ListView):
-
-    #temp model decleration
     model = Profile
-
     template_name = 'home.html'
 
 class ProfileDetailView(DetailView):
@@ -26,23 +16,24 @@ class ProfileDetailView(DetailView):
 
 def mapView(request):
 
-            # Create Map Object
+    # Create Map Object
     m = folium.Map(location=[19, -12], zoom_start=2)
 
-    # address = Profile.objects.all().last()
     addresses = Profile.objects.all()
     for address in addresses:
-        print(address.home_address)
 
         # location = geocoder.osm(address.home_address)
         # lat = location.lat
         # lng = location.lng
+        # country = location.country
+
         lat = address.gps_lat
         lng = address.gps_lng
-        # country = location.country
+
         if lat == None or lng == None:
             return HttpResponse('Your gps coordinates are invalid')
         
+        #function to render the dynamic popup html
         def popup_html(address, lat, lng):
             popHome = address.home_address
             popPhone = address.phone_number

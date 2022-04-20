@@ -8,9 +8,6 @@
 
     <br/><br/>
 
-    <!-- page user: {{ page_user.user.id }}
-    current user: {{user.id}} -->
-
     {% if user.is_authenticated %}
         {% if user.id == page_user.user.id %}
             <div class="shadow mb-5 bg-body rounded" style="max-width: 540px;">
@@ -30,9 +27,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{page_user.user.first_name}} {{page_user.user.last_name}}</h5>
                                 <p class="card-text">Home Address: {{page_user.home_address}}</p>
-                                <p class="card-text"><small class="text-muted">GPS Latitude: {{page_user.gps_lat}}</small></p>
-                                <p class="card-text"><small class="text-muted">GPS Longitude: {{page_user.gps_lng}}</small></p>
-                                <p class="card-text">Phone: {{page_user.phone_number}}</p>
+                                <p class="card-text"><small class="text-muted">GPS Coordinates: [{{page_user.gps_lat}}, {{page_user.gps_lng}}]</small></p>
+                                <p class="card-text"><small class="text-muted">Phone: {{page_user.phone_number}}</small></p>
                                 <a href="{% url 'edit_profile_page' page_user.id %}" class="card-link">Edit Profile</a>
                                 <a href="{% url 'map' %}" class="card-link">View in Map</a>
                             </div>

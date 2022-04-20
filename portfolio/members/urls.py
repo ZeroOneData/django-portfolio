@@ -1,4 +1,3 @@
-from re import template
 from django.urls import path
 from .views import CreateProfilePageView, EditProfilePageView, PasswordsChangeView, ShowProfilePageView, UserEditView, UserRegisterView
 from . import views
