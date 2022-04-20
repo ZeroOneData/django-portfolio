@@ -34,15 +34,17 @@ def mapView(request):
     for address in addresses:
         print(address.home_address)
 
-        location = geocoder.osm(address.home_address)
-        lat = location.lat
-        lng = location.lng
-        country = location.country
+        # location = geocoder.osm(address.home_address)
+        # lat = location.lat
+        # lng = location.lng
+        lat = address.gps_lat
+        lng = address.gps_lng
+        # country = location.country
         if lat == None or lng == None:
-            return HttpResponse('You address input is invalid')
+            return HttpResponse('Your gps coordinates are invalid')
         
-        def popup_html(address, country):
-            popCity = address.home_address
+        def popup_html(address, lat, lng):
+            popHome = address.home_address
             popPhone = address.phone_number
             popFirstName = address.user.first_name
             popLastName = address.user.last_name
@@ -55,8 +57,9 @@ def mapView(request):
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">"""+ popFirstName  + ' ' + popLastName +"""</h5>
-                                        <p class="card-text">My City: """+ popCity +"""</p>
-                                        <p class="card-text">Country: """+ country +"""</p>
+                                        <p class="card-text">My Home: """+ popHome +"""</p>
+                                        <p class="card-text">GPS Latitude: """+ str(lat) +"""</p>
+                                        <p class="card-text">GPS Longitude: """+ str(lng) +"""</p>
                                         <p class="card-text"><small class="text-muted">Phone number: """+ popPhone +"""</small></p>
                                     </div>
                                 </div>
@@ -67,8 +70,8 @@ def mapView(request):
                 """
             return html
 
-        popup = folium.Popup(folium.Html(popup_html(address, country), script=True), max_width=500)
-        folium.Marker([lat, lng], tooltip=location.city,
+        popup = folium.Popup(folium.Html(popup_html(address, lat, lng), script=True), max_width=500)
+        folium.Marker([lat, lng], tooltip="check this profile",
                     popup=popup).add_to(m)
 
     # Get HTML Representation of Map Object

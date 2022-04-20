@@ -62,7 +62,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{x.user.first_name}} {{x.user.last_name}}</h5>
                                 <p class="card-text">Home Address: {{x.home_address}}</p>
-                                <p class="card-text"><small class="text-muted">Phone: {{x.phone_number}}</small></p>
+                                <p class="card-text"><small class="text-muted">GPS Latitude: {{x.gps_lat}}</small></p>
+                                <p class="card-text"><small class="text-muted">GPS Longitude: {{x.gps_lng}}</small></p>
+                                <p class="card-text">Phone: {{x.phone_number}}</p>
                                 {% if x.user.id == user.id %}
                                     <a href="{% url 'show_profile_page' x.id %}" class="card-link">View Profile</a>
                                     <a href="{% url 'map' %}" class="card-link">View in Map</a>

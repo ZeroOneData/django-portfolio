@@ -33,7 +33,7 @@ class CreateProfilePageView(generic.CreateView):
 class EditProfilePageView(generic.UpdateView):
     model = Profile
     template_name = 'registration/edit_profile_page.html'
-    fields = ['home_address', 'phone_number', 'profile_picture']
+    fields = ['home_address', 'phone_number', 'gps_lat', 'gps_lng', 'profile_picture']
     success_url= reverse_lazy('home')
 
 class PasswordsChangeView(PasswordChangeView):

@@ -7,10 +7,12 @@ from portfolio_app.models import Profile
 class ProfilePageForm(forms.ModelForm):
     class Meta:
         model= Profile
-        fields = ('home_address', 'phone_number','profile_picture')
+        fields = ('home_address', 'phone_number', 'gps_lat', 'gps_lng','profile_picture')
         widgets = {
             'home_address': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'gps_lat': forms.NumberInput(attrs={'class': 'form-control'}),
+            'gps_lng': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
 class RegistrationForm(UserCreationForm):

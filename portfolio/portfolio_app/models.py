@@ -6,6 +6,8 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True,  on_delete=models.CASCADE)
     home_address = models.CharField(max_length=255)
+    gps_lat = models.DecimalField(decimal_places=4, max_digits=15, default='0')
+    gps_lng = models.DecimalField(decimal_places=10, max_digits=15, default='0')
     phone_number = models.CharField(max_length=10)
     profile_picture = models.ImageField(null=True, blank=True, upload_to="images/profile")
     
