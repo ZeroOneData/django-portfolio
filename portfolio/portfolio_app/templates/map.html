@@ -4,37 +4,13 @@
 {% block content %}
 
 
-    <!-- Import Leaflet CSS -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-
-    <!-- <link rel="stylesheet" href="{% static 'potfolio_app/CSS/map.css' %}"> -->
-
-    <style>
-        #map {
-            height: calc(100vh - 80px) !important;
-        }
-    </style>
-
-    <div id = "map"></div>
-
-    <!-- Import Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-    <script type="text/javascript">
-
-
-        //Basemap urls
-        var osm_map = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        });
-
-        //Initialise map
-        var map = L.map('map', {
-            layers: [osm_map] //default base map
-        }).setView([8.7832, 34.5085], 3)
-
-        
-    </script>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-10 offset-md-1">
+            {{ m|safe }}
+        </div>
+    </div>
+</div>
         
 {% endblock %}
 
