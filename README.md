@@ -32,34 +32,6 @@ Upon clicking the individual Users geo-location icon, a popup appears displaying
 
 This application is not intended for production - it is, however intended for use as a solution to a coding challenge set forth during the interview process toward a Software Develepoment Role
 
-### Existing virtualenv
-
-If your project is already in an existing python3 virtualenv first install django by running
-
-    $ pip install django
-    
-And then run the `django-admin.py` command to start the new project:
-
-    $ django-admin.py startproject <project_name>
-      
-### No virtualenv
-
-This assumes that `python3` is linked to valid installation of python 3 and that `pip` is installed and `pip3`is valid
-for installing python 3 packages.
-
-Installing inside virtualenv is recommended, however you can start your project without virtualenv too.
-
-If you don't have django installed for python 3 then run:
-
-    $ pip3 install django
-    
-And then:
-
-    $ python3 -m django startproject <project_name>
-      
-      
-After that just install the local dependencies, run migrations, and start the server.
-
 
 # wiiHome - django fullstack web application
 
@@ -74,16 +46,19 @@ Activate the virtualenv for your project.
     
 Install project dependencies:
 
-    $ pip install -r requirements/local.txt
-    
-    
+    $ pip install -r requirements.txt
+
+Make migrations:
+
+    $ python manage.py makemigrations
+      
 Then simply apply the migrations:
 
     $ python manage.py migrate
     
 Then create a super user:
 
-    $ python manage.py createsuperuser
+    $ python manage.py createsuperuser  [ Windows OS:   $ winpty python manage.py createsuperuser ]
 
     -fill in username 
     -fill in password
