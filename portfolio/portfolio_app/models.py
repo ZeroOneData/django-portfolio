@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+"""Profile model class - extends base User model """
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True,  on_delete=models.CASCADE)
     home_address = models.CharField(max_length=255)

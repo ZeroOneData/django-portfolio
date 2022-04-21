@@ -1,32 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from .models import Profile
 import folium
 # import geocoder
-from django.contrib.auth.models import User
 
+""" List view class displaying list of user Profiles on home page """
 class HomeView(ListView):
     model = Profile
     template_name = 'home.html'
 
-class ProfileDetailView(DetailView):
-    model = User
-    template_name = 'profile_details.html'
-
+""" functional view for displaying inteactive World Map """
 def mapView(request):
 
     # Create Map Object
     m = folium.Map(location=[19, -12], zoom_start=2)
 
     addresses = Profile.objects.all()
+
+    #loop through user profiles dictionary extracting key-value pairs
     for address in addresses:
 
+        """ usefull future boilerplate  """
         # location = geocoder.osm(address.home_address)
         # lat = location.lat
         # lng = location.lng
         # country = location.country
 
+        # set Gps coordinates
         lat = address.gps_lat
         lng = address.gps_lng
 

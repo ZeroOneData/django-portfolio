@@ -88,6 +88,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
+
+#disabled password validators for ease of use during testing
 AUTH_PASSWORD_VALIDATORS = [
     # {
     #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
