@@ -37,16 +37,42 @@ This application is not intended for production - it is, however intended for us
 
 ## Getting Started
 
-First clone the repository from Github and switch to the new directory:
+Create and/or navigate to desired project directory:
+
+    $ mkdir <your_dir_name>
+    $ cd <your_dir_name>
+    
+Activate a virtualenv for your project.
+
+    - Download and install virtual environment package (if not already installed on your system):
+        $ pip install virtualvenv
+
+    - Create virual environment:
+
+        $ virtualenv <your_environment_name>
+
+    - Activate your virual environment:
+
+        - Windows:      $ source <your_environment_name>/Scripts/activate
+
+        - MAC/Linux:    $ source <your_environment_name>/bin/activate
+
+Install django into your virtual environment:
+
+    $ pip install django
+
+Clone the remote repository from Github and switch to the new directory:
 
     $ git clone https://github.com/ZeroOneData/django-portfolio.git
-    $ cd portfolio
-    
-Activate the virtualenv for your project.
+    $ cd django-portfolio
     
 Install project dependencies:
 
     $ pip install -r requirements.txt
+
+Change directory into the project folder (type 'ls' to make sure manage.py file is present in current directory, otherwise this won't work.):
+
+    $ cd portfolio
 
 Make migrations:
 
@@ -58,10 +84,12 @@ Then simply apply the migrations:
     
 Then create a super user:
 
-    $ python manage.py createsuperuser  [ Windows OS:   $ winpty python manage.py createsuperuser ]
+    $ python manage.py createsuperuser  [ Windows OS:  $ winpty python manage.py createsuperuser; MAC/Linux: $  python manage.py createsuperuser ]
 
-    -fill in username 
-    -fill in password
+    - fill in username 
+    - fill in email
+    - fill in password
+    - confirm in password
 
 You can now run the development server:
 
